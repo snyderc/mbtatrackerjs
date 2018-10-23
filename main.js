@@ -62,6 +62,7 @@ function clearStops() {
 
 // Clears predictions data and frontend
 function clearPredictions() {
+  busVars.currentTime = undefined;
   busData.listOfPredictions.length = 0;
   busData.listOfAlerts.length = 0;
   busData.listOfTrips.clear();
@@ -190,7 +191,7 @@ function processPredictionList(jsonData) {
 }
 
 function showPredictionList(list) {
-  let htmlToAdd = `<p>As of ${busVars.currentTime.toLocaleString()}</p>`;
+  let htmlToAdd = `<p>As of ${busVars.currentTime.toLocaleString()} (refreshes every 30 seconds)</p>`;
   if (list.length > 0) {
     list.forEach( (el) => {
       const minutesToDeparture = Math.floor((el.departureTime - busVars.currentTime) / 1000 / 60);
@@ -247,8 +248,13 @@ function handleDirectionChange(event) {
 
 // Prints predictions based on that stop/direction/route
 function handleStopChange(event) {
-  clearData('stop'); // Clear any existing data
   busVars.stopId = event.target.value;
+  handleStopRefresh();
+}
+
+function handleStopRefresh() {
+  setTimeout('handleStopRefresh();', 30000)
+  clearData('stop'); // Clear any existing data
   const url = `https://api-v3.mbta.com/predictions?api_key=${API_KEY}&filter[stop]=${busVars.stopId}&filter[route]=${busVars.routeId}&filter[direction_id]=${busVars.directionId}&include=trip,alerts`;
   getData(url)
   .then(convertDataToJson)
