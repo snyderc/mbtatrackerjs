@@ -194,8 +194,8 @@ function showPredictionList(list) {
   if (list.length > 0) {
     list.forEach( (el) => {
       const minutesToDeparture = Math.floor((el.departureTime - busVars.currentTime) / 1000 / 60);
-      let timeToOutput = minutesToDeparture > 0 ? minutesToDeparture : 'Arriving';
-      htmlToAdd += `<p>${timeToOutput} mins (destination ${el.headsign})</p>`;
+      let timeToOutput = minutesToDeparture > 0 ? `${minutesToDeparture} mins` : 'Arriving';
+      htmlToAdd += `<p>${timeToOutput} (destination ${el.headsign})</p>`;
     });
   }
   else {
