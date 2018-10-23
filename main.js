@@ -75,7 +75,7 @@ function getData(url) {
 
 function convertDataToJson(data) {
   // Logs the time at which the URL was fetched
-  busVars.currentTime = Date.now();
+  busVars.currentTime = new Date(Date.now());
   return data.json();
 }
 
@@ -190,7 +190,7 @@ function processPredictionList(jsonData) {
 }
 
 function showPredictionList(list) {
-  let htmlToAdd = '';
+  let htmlToAdd = `<p>As of ${busVars.currentTime.toLocaleString()}</p>`;
   if (list.length > 0) {
     list.forEach( (el) => {
       const minutesToDeparture = Math.floor((el.departureTime - busVars.currentTime) / 1000 / 60);
