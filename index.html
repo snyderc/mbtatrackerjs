@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="chooseRoute">
+        <form>
+            <select id="dropdown_routes" name="routes" onchange="handleRouteChange(event)">
+                <option>Loading routes...</option>
+            </select>
+        </form>
+        <!-- <form onsubmit="handleRouteSubmit(event)">
+            <input type="text" name="route" placeholder="Route #">
+            <input type="submit" value="Submit">
+        </form> -->
+    </div>
+    <div class="chooseDirection">
+        <form>
+            <select id="dropdown_directions" name="directions" onchange="handleDirectionChange(event)">
+            </select>
+        </form>
+    </div>
+    <div class="chooseStop">
+        <form>
+            <select id="dropdown_stops" name="stops" onchange="handleStopChange(event)">
+            </select>
+        </form>
+    </div>
+    <div id="predictions" class="predictions">
+
+    </div>
+</body>
+</html>
