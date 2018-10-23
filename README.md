@@ -1,6 +1,6 @@
 MBTA Bus Tracker
 
-A work in progress. All client-side JS. Open index.html in the browser to run.
+A work in progress. All client-side JS. Open index.html in the browser to run. Based on the MBTA v3 API.
 
 Regardless of your selection for Direction, you will either get a full list of Inbound stops or a full list of Outbound stops.
 
